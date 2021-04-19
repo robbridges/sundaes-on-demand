@@ -53,5 +53,6 @@ test('popover responds to hover', async () => {
   userEvent.unhover(termsAndConditions);
   await waitForElementToBeRemoved(() =>
     screen.queryByText(/no ice cream will actually be delivered/i)
+    
   );
 });

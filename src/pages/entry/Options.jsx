@@ -9,7 +9,7 @@ export default function Options({optionType}) {
 
   //options is scoops or toppings
   useEffect(() => {
-    axios.get(`http://localhost:3030/{optionType}`)
+    axios.get(`http://localhost:3030/${optionType}`)
     .then(response => setItems(response.data))
     .catch(error => {
       console.log(`There was an error ${error}`);

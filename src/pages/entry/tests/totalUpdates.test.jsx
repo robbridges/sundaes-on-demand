@@ -10,7 +10,7 @@ test('update scoop subtotal when scoops change', async () => {
 
   expect(scoopsSubTotal).toHaveTextContent('0.00');
 
-  const vanillaInput = await screen.findAllByRole('spinbutton', 
+  const vanillaInput = await screen.findByRole('spinbutton', 
   { name: 'Vanilla', }
   );
 
@@ -19,7 +19,7 @@ test('update scoop subtotal when scoops change', async () => {
 
   expect(scoopsSubTotal).toHaveTextContent('2.00');
 
-  const chocolateInput = await screen.findAllByRole('spinbutton', 
+  const chocolateInput = await screen.findByRole('spinbutton', 
   { name: 'Chocolate', }
   );
   

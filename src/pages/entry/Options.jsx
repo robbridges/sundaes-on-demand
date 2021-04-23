@@ -26,15 +26,16 @@ export default function Options({optionType}) {
 
   // TODO replace with toppings once made
   const ItemComponent = optionType === 'scoops' ? ScoopOptions : ToppingsOptions;
-  const title = optionType[0].toUpperCase() + optionType.slace(1).toLowerCase();
+  const title = optionType[0].toUpperCase() + optionType.slice(1).toLowerCase();
 
-  const optionItems = items.map( (item) => (
-    <ItemComponent 
-    key={item.name} 
-    name={item.name} 
-    imagePath={item.imagePath}
-    updateItemCount ={(itemName, newItemCount) => updateItemCount(itemName, newItemCount, optionType )}
-
+  const optionItems = items.map((item) => (
+    <ItemComponent
+      key={item.name}
+      name={item.name}
+      imagePath={item.imagePath}
+      updateItemCount={(itemName, newItemCount) =>
+        updateItemCount(itemName, newItemCount, optionType)
+      }
     />
   ));
 
@@ -42,7 +43,9 @@ export default function Options({optionType}) {
     <>
     <h2>{title}</h2>
     <p>{pricePerItem[optionType]} each</p>
-    <p>{title} total: {orderDetails.totals[optionType]}</p>
+    <p>
+      {title} total: {orderDetails.totals[optionType]}
+    </p>
     <Row>{optionItems}</Row>
     </>
   );

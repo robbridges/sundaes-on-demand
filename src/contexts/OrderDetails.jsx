@@ -1,6 +1,16 @@
 import  { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { pricePerItem } from '../constants/index';
 
+
+//format number as currency 
+
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('en-us', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  }).format(amount);
+}
 const OrderDetails = createContext();
 
 //create custom hook  to see if in provider or not
@@ -9,7 +19,7 @@ export function useOrderDetails() {
   const context = useContext(OrderDetails);
 
   if(!context) {
-    throw new Error('userOrderDetails must be used within an OrderDetailsProvider');
+    throw new Error('useOrderDetails must be used within an OrderDetailsProvider');
   }
 
   return context;
@@ -29,10 +39,12 @@ export function OrderDetailsProvider(props) {
     toppings: new Map(),
 })
 
+const zeroCurrency = formatCurrency(0);
+
 const [totals, setTotals] = useState({
-  scopps: 0,
-  toppings: 0,
-  grandTotal: 0,
+  scopps: zeroCurrency,
+  toppings: zeroCurrency,
+  grandTotal: zeroCurrency,
 })
 
 useEffect( () => {
@@ -40,10 +52,10 @@ useEffect( () => {
   const toppingsSubTotal = calculateSubTotal('toppings', optionCounts);
   const grandTotal = scoopsSubTotal + toppingsSubTotal;
   setTotals({
-    scoops: scoopsSubTotal,
-    toppings: toppingsSubTotal,
-    grandTotal,
-  })
+    scoops: formatCurrency(scoopsSubTotal),
+    toppings: formatCurrency(toppingsSubTotal),
+    grandTotal: formatCurrency(grandTotal),
+  });
 }, [optionCounts]);
 
   const value = useMemo(() => {

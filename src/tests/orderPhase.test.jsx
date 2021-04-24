@@ -7,7 +7,7 @@ test('order phases for happy path', async () => {
   //render app
   render(<App />);
   // add ice cream scoops and toppings
-  const vanillaInput = await screen.findByRole('spinButton', 
+  const vanillaInput = await screen.findByRole('spinbutton', 
   { name: 'Vanilla'});
 
   userEvent.clear(vanillaInput);

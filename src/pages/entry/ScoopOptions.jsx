@@ -2,7 +2,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
-
+// displays the scoop options and the spin buttons to edit the amount of scoops part of the order entry component
 export default function ScoopOptions({ name, imagePath, updateItemCount }) {
   const handleChange =(e) => {
     updateItemCount(name, e.target.value)

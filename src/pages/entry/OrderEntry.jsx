@@ -2,7 +2,7 @@ import Options from './Options';
 import {  useOrderDetails } from '../../contexts/OrderDetails';
 
 export default function OrderEntry() {
-  // main start page, reveals the start of the 
+  // main start page, reveals the start of the program of our single page app
   const [orderDetails] = useOrderDetails();
   return (
   <div>

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import Options from '../Options';
 import OrderEntry from '../OrderEntry';
 
-
+// ensure that the scoop subtotal updates
 test('update scoop subtotal when scoops change', async () => {
   render(<Options optionType="scoops" />);
 
@@ -29,7 +29,7 @@ test('update scoop subtotal when scoops change', async () => {
   expect(scoopsSubTotal).toHaveTextContent('6.00');
 
 });
-
+// ensure that the toppings sub total updates
 test('update topping subtotal when toppings change', async () => {
   render(<Options optionType="toppings" />);
 
@@ -60,6 +60,7 @@ test('update topping subtotal when toppings change', async () => {
 
 });
 
+// final test block, 3 tests to make sure that the grand total updates, either with toppings added first or scoops. 
 describe('grand total', () => {
   
 
@@ -70,7 +71,7 @@ describe('grand total', () => {
 
     //assert that grand total starts at zero, we were getting axios errors when this was it's own test without a need for async awaits
     expect(grandTotal).toHaveTextContent('0.00');
-    
+
     const vanillaInput = await screen.findByRole('spinbutton', {
       name: 'Vanilla',
     });

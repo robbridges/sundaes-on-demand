@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 
+// mock handlers and responses from mock service worker for testing purposes.
 export const handlers =[
   rest.get("http://localhost:3030/scoops", (req,res, ctx) => {
     return res(

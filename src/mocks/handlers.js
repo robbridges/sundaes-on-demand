@@ -19,4 +19,11 @@ export const handlers =[
       ])
     )
   }),
+  rest.post("http://localhost:3030/order", (req,res,ctx) => {
+    return res(
+      ctx.json([
+        {}
+      ])
+    )
+  }),
 ];
